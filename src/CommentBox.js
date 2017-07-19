@@ -3,19 +3,28 @@ import store from './store.js'
 
 
 class CommentBox extends React.Component{
+  state={
+    comments:store.getState()
+  }
   handleSubmit = (e)=>{
     e.preventDefault()
     let newComment = this.comment.value.trim()
-    if(newComment)
-    this.setState({comments:[...this.state.comments,newComment]})
+    // console.log(store.getState())
+    if(newComment){
+      store.dispatch({type:'ADD_COMMENT',comment:newComment})
+    }
+    this.setState({
+      comments:store.getState()
+    })
+    // console.log(store.getState())
     this.commentForm.reset()
   }
   render(){
-    console.log(store.getState())
+    console.log(this.state.comments)
     return(
       <div className='comment-box'>
         {
-          store.getState().map(item=>(
+          this.state.comments.map(item=>(
             <li key={Math.random()} className='comment'>{item}</li>
           ))
         }

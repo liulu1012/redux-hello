@@ -1,18 +1,22 @@
 import React from 'react'
 import PostBody from './PostBody'
 import CommentBox from './CommentBox'
+import store from './store.js'
+import {Provider} from 'react-redux'
 
 class App extends React.Component{
   render(){
     return(
-      <div>
-        <div className='top clearfix'>
-          <PostBody />
+      <Provider store={store}>
+        <div>
+          <div className='top clearfix'>
+            <PostBody />
+          </div>
+          <div className='bottom clearfix'>
+            <CommentBox />
+          </div>
         </div>
-        <div className='bottom clearfix'>
-          <CommentBox />
-        </div>
-      </div>
+      </Provider>
     )
   }
 }
