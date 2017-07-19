@@ -5,7 +5,7 @@ class PostBody extends React.Component{
   render(){
     return(
       <div className='post-body'>
-        body
+        post-body
       </div>
     )
   }
