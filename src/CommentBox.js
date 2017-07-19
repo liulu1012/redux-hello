@@ -1,11 +1,9 @@
 import React from 'react'
 import store from './store.js'
+import {connect} from 'react-redux'
 
 
 class CommentBox extends React.Component{
-  state={
-    comments:store.getState()
-  }
   handleSubmit = (e)=>{
     e.preventDefault()
     let newComment = this.comment.value.trim()
@@ -20,11 +18,11 @@ class CommentBox extends React.Component{
     this.commentForm.reset()
   }
   render(){
-    console.log(this.state.comments)
+    console.log(this.props)
     return(
       <div className='comment-box'>
         {
-          this.state.comments.map(item=>(
+          this.props.comments.map(item=>(
             <li key={Math.random()} className='comment'>{item}</li>
           ))
         }
@@ -38,4 +36,8 @@ class CommentBox extends React.Component{
   }
 }
 
-export default CommentBox
+const mapStateToProps = (state) =>({
+  comments:state
+})
+
+export default connect(mapStateToProps)(CommentBox)
