@@ -6,7 +6,12 @@ class PostBody extends React.Component{
   render(){
     return(
       <div className='post-body'>
-        {this.props.comments.length}
+        <div className="likes-num num">
+          333 赞
+        </div>
+        <div className="comment-num num">
+          {this.props.comments.length} 评论
+        </div>
       </div>
     )
   }
