@@ -1,22 +1,24 @@
 import React from 'react'
-import PostBody from './PostBody'
-import CommentBox from './CommentBox'
-import store from './store.js'
-import {Provider} from 'react-redux'
+import './main.css'
+import HomePage from './HomePage'
+import SignUp from './SignUp'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+}from 'react-router-dom'
 
 class App extends React.Component{
   render(){
     return(
-      <Provider store={store}>
-        <div>
-          <div className='top clearfix'>
-            <PostBody />
+      <Router>
+        <Switch>
+          <div>
+            <Route path='/' exact component={HomePage}/>
+            <Route path='/signup' component={SignUp}/>
           </div>
-          <div className='bottom clearfix'>
-            <CommentBox />
-          </div>
-        </div>
-      </Provider>
+        </Switch>
+      </Router>
     )
   }
 }
